@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Music Box</h1>
+
+    <script type="module">
+        import { Key, Frequency, MusicBox } from './index.js'
+
+        const key = new Key([new Frequency('D', 4, 0.18)]);
+
+        const musicBox = new MusicBox(new AudioContext());
+
+        window.addEventListener('click',() => musicBox.playKey(key));
+    </script>
+</body>
+</html>

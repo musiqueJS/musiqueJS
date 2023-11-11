@@ -1,0 +1,12 @@
+{
+  "name": "musiqueJS",
+  "version": "0.0.1",
+  "description": "TBA",
+  "main": "app.js",
+  "repository": "git@github.com:musiqueJS/musiqueJS.git",
+  "author": "MusiqueJS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
