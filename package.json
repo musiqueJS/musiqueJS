@@ -1,0 +1,20 @@
+{
+  "name": "musiquejs",
+  "version": "1.0.0",
+  "description": "This library allows you to play music samples in your web app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "keywords": [
+    "music",
+    "library"
+  ],
+  "author": "Harold Gang",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
