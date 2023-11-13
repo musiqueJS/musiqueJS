@@ -1,5 +1,2 @@
-const sayHello = () => {
-  return 'Hello from Musique.js !'
-}
-
-export { sayHello }
+export { Note } from './src/Note'
+export { Partition } from './src/Partition'
