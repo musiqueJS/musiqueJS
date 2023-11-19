@@ -1,3 +1,6 @@
+/**
+ * NoteEnum is a list of all the notes in the chromatic scale.
+ */
 enum NoteEnum {
     C = 0,
     CSharp = 1,

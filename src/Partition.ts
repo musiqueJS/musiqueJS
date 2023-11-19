@@ -1,18 +1,33 @@
 import {CustomAccord} from "./CustomAccord"
 
 class Partition {
+
+	/**
+	 * @param {CustomAccord[]} accords - The accords that will be played sequentially.
+	 * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
+	 * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
+	 */
 	constructor(
 		public accords: CustomAccord[],
 		public oscillator: OscillatorType = 'sine',
 		public audioContext: AudioContext,
 	) {}
 
+	/**
+	 * Plays the partition sequentially.
+	 * @returns {Promise<void>}
+	 */
 	public async playPartition() {
 		for (const accord of this.accords) {
 			await this.playAccord(accord)
 		}
 	}
 
+	/**
+	 * Plays the accord simultaneously.
+	 * @returns {Promise<void>}
+	 * @param {CustomAccord} accord
+	 */
 	public async playAccord(accord: CustomAccord) {
 		return new Promise<void>((resolve) => {
 			let oscillators = this.getOscillatorNodesFromAccord(accord)
