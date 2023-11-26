@@ -6,7 +6,7 @@ class Note {
 	/**
 	 * @param {NoteEnum} note
 	 * @param {number} octave - 0 to 8
-	 * @param {number} duration How many beats will this note last.
+	 * @param {number} duration How long the note will be played in seconds. (you most likely want to stay under 1 second)
 	 */
 	constructor(
 		public note: NoteEnum,

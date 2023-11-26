@@ -33,16 +33,16 @@ class Partition {
 			let oscillators = this.getOscillatorNodesFromAccord(accord)
 
 			if (oscillators[0]) {
-				oscillators.forEach(({oscillatorNode}) => oscillatorNode.start(this.audioContext.currentTime));
+				oscillators.forEach(({oscillatorNode, noteDuration}) => {
+					oscillatorNode.start(this.audioContext.currentTime)
 
-				setTimeout(() => {
-					oscillators.forEach(({oscillatorNode}) => {
+					setTimeout(() => {
 						oscillatorNode.stop(0);
 						oscillatorNode.disconnect();
-					});
 
-					resolve();
-				}, oscillators[0].noteDuration * 1000);
+						resolve();
+					}, noteDuration * 1000);
+				});
 			}
 		});
 	}
@@ -52,7 +52,7 @@ class Partition {
 		let oscillatorNode: OscillatorNode
 
 		return accord.notes.map((note) => {
-			const noteDuration: number = note.duration * 0.18
+			const noteDuration: number = note.duration
 
 			gainNode = this.audioContext.createGain()
 			gainNode.connect(this.audioContext.destination)
