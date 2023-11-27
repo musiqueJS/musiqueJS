@@ -1,5 +1,11 @@
 # musiquejs
 
+## 0.2.1
+
+### Patch Changes
+
+- using Notes for Chords & support long Partitions
+
 ## 0.2.0
 
 ### Minor Changes
