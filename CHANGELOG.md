@@ -1,5 +1,11 @@
 # musiquejs
 
+## 0.2.2
+
+### Patch Changes
+
+- fixing build
+
 ## 0.2.1
 
 ### Patch Changes
