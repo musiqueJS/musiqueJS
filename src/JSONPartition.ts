@@ -1,5 +1,4 @@
 import { Partition } from "./Partition";
-import { CustomChord } from "./CustomChord";
 import { Note } from "./Note";
 
 interface JSONNote {
@@ -10,12 +9,12 @@ interface JSONNote {
 
 class JSONPartition extends Partition {
   /**
-   * @param {JSONNote[][]} json - The JSON that will be parsed into a partition.
+   * @param {JSONNote[]} json - The JSON that will be parsed into a partition.
    * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
    * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
    */
   constructor(
-    public json: JSONNote[][],
+    public json: JSONNote[],
     public oscillator: OscillatorType = "sine",
     public audioContext: AudioContext,
   ) {
@@ -33,17 +32,14 @@ class JSONPartition extends Partition {
       ASharp = 10,
       B = 11,
     }
-    let jsonChords: CustomChord[] = [];
-    for (const chord of json) {
-      let notes = [];
-      for (const note of chord) {
-        // @ts-ignore
-        notes.push(new Note(NoteEnum[note.note], note.octave, note.duration));
-      }
-      jsonChords.push(new CustomChord(notes));
+    let jsonNotes: Note[] = [];
+
+    for (const note of json) {
+      // @ts-ignore
+      jsonNotes.push(new Note(NoteEnum[note.note], note.octave, note.duration));
     }
 
-    super(jsonChords, oscillator, audioContext);
+    super(jsonNotes, oscillator, audioContext);
   }
 }
 

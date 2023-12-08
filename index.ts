@@ -1,4 +1,6 @@
 export { Note } from "./src/Note";
-export { CustomChord } from "./src/CustomChord";
 export { Partition } from "./src/Partition";
-export { JSONPartition } from "./src/JSONPartition";
+
+// Coming in V2!
+// export { CustomChord } from "./src/CustomChord";
+// export { JSONPartition } from "./src/JSONPartition";
