@@ -1,14 +1,14 @@
-import {CustomAccord} from "./CustomAccord"
+import {CustomChord} from "./CustomChord"
 
 class Partition {
 
 	/**
-	 * @param {CustomAccord[]} accords - The accords that will be played sequentially.
+	 * @param {CustomChord[]} chords - The chords that will be played sequentially.
 	 * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
 	 * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
 	 */
 	constructor(
-		public accords: CustomAccord[],
+		public chords: CustomChord[],
 		public oscillator: OscillatorType = 'sine',
 		public audioContext: AudioContext,
 	) {}
@@ -17,20 +17,20 @@ class Partition {
 	 * Plays the partition sequentially.
 	 * @returns {Promise<void>}
 	 */
-	public async playPartition() {
-		for (const accord of this.accords) {
-			await this.playAccord(accord)
+	public async play() {
+		for (const chord of this.chords) {
+			await this.playChord(chord)
 		}
 	}
 
 	/**
-	 * Plays the accord simultaneously.
+	 * Plays the chord simultaneously.
 	 * @returns {Promise<void>}
-	 * @param {CustomAccord} accord
+	 * @param {CustomChord} chord
 	 */
-	public async playAccord(accord: CustomAccord) {
+	public async playChord(chord: CustomChord) {
 		return new Promise<void>((resolve) => {
-			let oscillators = this.getOscillatorNodesFromAccord(accord)
+			let oscillators = this.getOscillatorNodesFromChord(chord)
 
 			if (oscillators[0]) {
 				oscillators.forEach(({oscillatorNode, noteDuration}) => {
@@ -47,11 +47,11 @@ class Partition {
 		});
 	}
 
-	private getOscillatorNodesFromAccord(accord: CustomAccord) {
+	private getOscillatorNodesFromChord(chord: CustomChord) {
 		let gainNode: GainNode
 		let oscillatorNode: OscillatorNode
 
-		return accord.notes.map((note) => {
+		return chord.notes.map((note) => {
 			const noteDuration: number = note.duration
 
 			gainNode = this.audioContext.createGain()

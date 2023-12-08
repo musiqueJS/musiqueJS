@@ -1,6 +1,6 @@
 import {Note} from "./Note";
 
-class CustomAccord {
+class CustomChord {
     /**
      * @param {Note[]} notes - The notes that will be played simultaneously.
      */
@@ -9,4 +9,4 @@ class CustomAccord {
     ) {}
 }
 
-export { CustomAccord }
+export { CustomChord }
