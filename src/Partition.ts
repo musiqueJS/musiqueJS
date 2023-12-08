@@ -1,14 +1,14 @@
-import {CustomChord} from "./CustomChord"
+import {Note} from "./Note";
 
 class Partition {
 
 	/**
-	 * @param {CustomChord[]} chords - The chords that will be played sequentially.
+	 * @param {Note[]} notes - The notes that will be played sequentially.
 	 * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
 	 * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
 	 */
 	constructor(
-		public chords: CustomChord[],
+		public notes: Note[],
 		public oscillator: OscillatorType = 'sine',
 		public audioContext: AudioContext,
 	) {}
@@ -17,31 +17,14 @@ class Partition {
 	 * Plays the partition sequentially.
 	 */
 	public async play(): Promise<void> {
-		for (const chord of this.chords) {
-			await this.playChord(chord)
+		for (const note of this.notes) {
+			await this.playNote(note)
 		}
 	}
 
-	/**
-	 * Plays the chord simultaneously.
-	 * @param {CustomChord} chord
-	 */
-	public async playChord(chord: CustomChord): Promise<void> {
+	public async playNote(note: Note): Promise<void> {
 		return new Promise<void>((resolve) => {
-			let oscillators = chord.getOscillatorNodes(this.audioContext, this.oscillator)
-
-			if (oscillators[0]) {
-				oscillators.forEach(({oscillatorNode, noteDuration}) => {
-					oscillatorNode.start(this.audioContext.currentTime)
-
-					setTimeout(() => {
-						oscillatorNode.stop(0);
-						oscillatorNode.disconnect();
-
-						resolve();
-					}, noteDuration * 1000);
-				});
-			}
+			note.play(this.audioContext, this.oscillator, resolve)
 		});
 	}
 }

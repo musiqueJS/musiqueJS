@@ -2,6 +2,7 @@ class Note {
   private pitch: number;
 
   /**
+   * @param note
    * @param {number} octave - 0 to 8
    * @param {number} duration How long the note will be played in seconds. (you most likely want to stay under 1 second)
    */
@@ -49,12 +50,14 @@ class Note {
     return 440 * power;
   }
 
-  public play(audioContext: AudioContext, oscillator: OscillatorType): void {
+  public play(audioContext: AudioContext, oscillator: OscillatorType, resolve: () => void = () => {}): void {
     const oscillatorNode = this.getOscillator(audioContext, oscillator);
     oscillatorNode.start(audioContext.currentTime);
     setTimeout(() => {
       oscillatorNode.stop(0);
       oscillatorNode.disconnect();
+
+      resolve();
     }, this.duration * 1000);
   }
 
