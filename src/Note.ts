@@ -17,7 +17,7 @@ class Note {
 	}
 
 	/**
-	 * @returns number The pitch of the note in Hz.
+	 * @returns {number} The pitch of the note in Hz.
 	 */
 	public getPitch(): number {
 		let step = this.note.valueOf();
