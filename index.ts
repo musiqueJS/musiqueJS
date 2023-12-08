@@ -1,5 +1,5 @@
 export { Note } from './src/Note'
-export { CustomAccord } from './src/CustomAccord'
+export { CustomChord } from './src/CustomChord'
 export { Partition } from './src/Partition'
 export { NoteEnum } from './src/NoteEnum'
 export { JSONPartition } from './src/JSONPartition'

@@ -1,6 +1,6 @@
 import {Partition} from "./Partition";
 import {NoteEnum} from "./NoteEnum";
-import {CustomAccord} from "./CustomAccord";
+import {CustomChord} from "./CustomChord";
 import {Note} from "./Note";
 
 interface JSONNote {
@@ -21,17 +21,17 @@ class JSONPartition extends Partition {
 		public oscillator: OscillatorType = 'sine',
 		public audioContext: AudioContext,
 	) {
-		let jsonAccords: CustomAccord[] = [];
-		for (const accord of json) {
+		let jsonChords: CustomChord[] = [];
+		for (const chord of json) {
 			let notes = [];
-			for (const note of accord) {
+			for (const note of chord) {
 				// @ts-ignore
 				notes.push(new Note(NoteEnum[note.note], note.octave, note.duration));
 			}
-			jsonAccords.push(new CustomAccord(notes));
+			jsonChords.push(new CustomChord(notes));
 		}
 
-		super(jsonAccords, oscillator, audioContext);
+		super(jsonChords, oscillator, audioContext);
 	}
 
 }
