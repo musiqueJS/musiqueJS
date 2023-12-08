@@ -44,28 +44,6 @@ class Partition {
 			}
 		});
 	}
-
-	private getOscillatorNodesFromChord(chord: CustomChord): { oscillatorNode: OscillatorNode, noteDuration: number }[] {
-		let gainNode: GainNode
-		let oscillatorNode: OscillatorNode
-
-		return chord.notes.map((note) => {
-			const noteDuration: number = note.duration
-
-			gainNode = this.audioContext.createGain()
-			gainNode.connect(this.audioContext.destination)
-			gainNode.gain.setValueAtTime(0, this.audioContext.currentTime)
-			gainNode.gain.linearRampToValueAtTime(0.15, this.audioContext.currentTime + 0.01)
-			gainNode.gain.linearRampToValueAtTime(0, this.audioContext.currentTime + noteDuration - 0.01)
-
-			oscillatorNode = this.audioContext.createOscillator()
-			oscillatorNode.connect(gainNode)
-			oscillatorNode.type = this.oscillator
-			oscillatorNode.frequency.value = note.getPitch()
-
-			return { oscillatorNode, noteDuration }
-		})
-	}
 }
 
 export { Partition }
