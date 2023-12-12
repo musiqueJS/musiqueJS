@@ -3,7 +3,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "scripts": {
     "build": "tsup index.ts --format cjs,esm --dts",
     "lint": "tsc"

@@ -1,5 +1,11 @@
 # musiquejs
 
+## 0.3.0
+
+### Minor Changes
+
+- remove NoteEnum, remove chords from current features. This change breaks compatibility, however because our package is not yet fully completed (< v1.0.0) we feel like it is too early to declare this a major change.
+
 ## 0.2.2
 
 ### Patch Changes
