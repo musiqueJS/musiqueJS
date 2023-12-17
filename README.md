@@ -22,6 +22,7 @@ Musique.js is a small JS library which aims to help developers easily create mel
 ## We have a website!
 Visit [https://www.musiquejs.com/](https://www.musiquejs.com/) to see what we're about!
 
+You can also find us on [𝕏](https://twitter.com/MusiqueJS)
 ## Documentation
 
 The full documentation can be found at [https://docs.musiquejs.com/](https://docs.musiquejs.com/).
@@ -63,7 +64,7 @@ To test your changes to the package locally, you will have to:
 - Create another project/directory on your machine;
 - In there, use `npm link musiquejs` to import the local version of the package;
 - Use your modified version! (if you change the code, you will need to repeat step 1, the link however is only a one-time command) 
-
+- Don't forget about the linting with `npm run lint`
 ## Contributing
 
 Contributing is more than encouraged, no matter how!  
@@ -75,6 +76,6 @@ Every issue we identify as [good first issues](https://github.com/musiqueJS/musi
 
 ## Authors
 
-- Tom Louveau ([@TODO](https://twitter.com/))
-- Nicolas De Guarrrigues (𝕏 [@nicodegarrigues](https://twitter.com/nicodegarrigues))
+- Tom Louveau ([@bakabruh](https://github.com/bakabruh))
+- Nicolas de Garrigues (𝕏 [@nicodegarrigues](https://twitter.com/nicodegarrigues))
 - Julien Cousin-Alliot (𝕏 [@nispeon](https://twitter.com/nispeon))
