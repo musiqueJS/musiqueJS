@@ -1,5 +1,11 @@
 # musiquejs
 
+## 1.0.0
+
+### Major Changes
+
+- Time to play, you can now use Notes, Partitions, JSONPartitions & CustomChords
+
 ## 0.3.0
 
 ### Minor Changes
