@@ -4,7 +4,7 @@
 
 ### Major Changes
 
-- Time to play, you can now use Notes, Partitions, JSONPartitions & CustomChords
+- Time to play, you can now use Notes, Partitions, JSONPartitions
 
 ## 0.3.0
 
