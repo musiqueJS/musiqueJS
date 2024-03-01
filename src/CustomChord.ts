@@ -13,17 +13,8 @@ class CustomChord implements PlayableInterface {
 
     public play(audioContext: AudioContext, oscillator: OscillatorType, resolve: () => void = () => {}): void {
         for (const note of this.notes) {
-            // if (this.duration) {
-            //     note.duration = this.duration;
-            // }
-
             note.play(audioContext, oscillator, resolve)
         }
-
-        setTimeout(() => {
-            resolve();
-
-        }, 3 * 1000);
     }
 }
 
