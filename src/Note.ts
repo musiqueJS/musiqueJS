@@ -1,4 +1,6 @@
-class Note {
+import PlayableInterface from "./PlayableInterface";
+
+class Note implements PlayableInterface {
   private pitch: number;
 
   /**

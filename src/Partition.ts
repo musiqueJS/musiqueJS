@@ -1,14 +1,14 @@
-import {Note} from "./Note";
+import PlayableInterface from "./PlayableInterface";
 
 class Partition {
 
 	/**
-	 * @param {Note[]} notes - The notes that will be played sequentially.
+	 * @param {PlayableInterface[]} playable - The notes/chords that will be played sequentially.
 	 * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
 	 * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
 	 */
 	constructor(
-		public notes: Note[],
+		public playable: PlayableInterface[],
 		public oscillator: OscillatorType = 'sine',
 		public audioContext: AudioContext,
 	) {}
@@ -17,14 +17,14 @@ class Partition {
 	 * Plays the partition sequentially.
 	 */
 	public async play(): Promise<void> {
-		for (const note of this.notes) {
-			await this.playNote(note)
+		for (const playable of this.playable) {
+			await this.playSingle(playable)
 		}
 	}
 
-	public async playNote(note: Note): Promise<void> {
+	public async playSingle(playable: PlayableInterface): Promise<void> {
 		return new Promise<void>((resolve) => {
-			note.play(this.audioContext, this.oscillator, resolve)
+			playable.play(this.audioContext, this.oscillator, resolve)
 		});
 	}
 }
