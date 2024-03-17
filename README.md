@@ -7,7 +7,7 @@
 
 <p align="center">
   <a aria-label="NPM version" href="https://www.npmjs.com/package/musiquejs">
-    <img alt="Static Badge" src="https://img.shields.io/badge/v1.0.0-grey?logo=npm&label=Musique.js&labelColor=%23f13964&color=%23f13964">
+    <img alt="Static Badge" src="https://img.shields.io/badge/v1.1.0-grey?logo=npm&label=Musique.js&labelColor=%23f13964&color=%23f13964">
   </a>
   <a aria-label="License" href="https://github.com/musiqueJS/musiqueJS/blob/main/LICENSE">
     <img alt="Static Badge" src="https://img.shields.io/badge/MIT-grey?label=License&labelColor=%23c429e2&color=%23c429e2">
