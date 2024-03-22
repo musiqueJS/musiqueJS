@@ -63,6 +63,18 @@ class Note implements PlayableInterface {
     }, this.duration * 1000);
   }
 
+  public playPiano(audioContext: AudioContext, resolve: () => void = () => {}): void {
+    const oscillatorNode = this.getPianoOscillator(audioContext);
+    oscillatorNode.start(audioContext.currentTime);
+    setTimeout(() => {
+      oscillatorNode.stop(0);
+      oscillatorNode.disconnect();
+
+      resolve();
+    }, this.duration * 1000);
+}
+
+
   public getOscillator(
     audioContext: AudioContext,
     oscillator: OscillatorType,
@@ -89,6 +101,36 @@ class Note implements PlayableInterface {
 
     return oscillatorNode;
   }
+
+  public getPianoOscillator(audioContext: AudioContext): OscillatorNode {
+    const oscillatorNode = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillatorNode.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    const attackTime = 0.01;
+    const decayTime = 0.1;
+    const releaseTime = 0.3;
+
+    const now = audioContext.currentTime;
+
+    gainNode.gain.setValueAtTime(0, now);
+    gainNode.gain.linearRampToValueAtTime(1, now + attackTime);
+    gainNode.gain.linearRampToValueAtTime(0.6, now + attackTime + decayTime);
+    gainNode.gain.linearRampToValueAtTime(0, now + this.duration - releaseTime);
+
+    const real = new Float32Array([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]);
+    const imag = new Float32Array(real.length).fill(0);
+    const customWaveform = audioContext.createPeriodicWave(real, imag);
+
+    oscillatorNode.setPeriodicWave(customWaveform);
+
+    oscillatorNode.frequency.setValueAtTime(this.getPitch(), audioContext.currentTime);
+
+    return oscillatorNode;
+  }
+
 }
 
 export { Note };
