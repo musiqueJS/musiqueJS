@@ -22,7 +22,7 @@ class Partition {
 		}
 	}
 
-	public async playSingle(playable: PlayableInterface): Promise<void> {
+	private async playSingle(playable: PlayableInterface): Promise<void> {
 		return new Promise<void>((resolve) => {
 			playable.play(this.audioContext, this.oscillator, resolve)
 		});
