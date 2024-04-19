@@ -1,8 +1,6 @@
 import PlayableInterface from "./PlayableInterface";
 
 class Note implements PlayableInterface {
-  private pitch: number;
-
   /**
    * @param note
    * @param {number} octave - 0 to 8
@@ -25,7 +23,6 @@ class Note implements PlayableInterface {
     public octave: number,
     public duration: number,
   ) {
-    this.pitch = this.getPitch();
   }
 
   /**
