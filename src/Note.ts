@@ -1,8 +1,6 @@
 import PlayableInterface from "./PlayableInterface";
 
 class Note implements PlayableInterface {
-  private pitch: number;
-
   /**
    * @param note
    * @param {number} octave - 0 to 8
@@ -25,7 +23,6 @@ class Note implements PlayableInterface {
     public octave: number,
     public duration: number,
   ) {
-    this.pitch = this.getPitch();
   }
 
   /**
@@ -49,6 +46,7 @@ class Note implements PlayableInterface {
 
     let step = NoteEnum[this.note];
     let power = Math.pow(2, (this.octave * 12 + step - 57) / 12);
+    console.log(this.note);
     return 440 * power;
   }
 
