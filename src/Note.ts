@@ -46,7 +46,6 @@ class Note implements PlayableInterface {
 
     let step = NoteEnum[this.note];
     let power = Math.pow(2, (this.octave * 12 + step - 57) / 12);
-    console.log(this.note);
     return 440 * power;
   }
 

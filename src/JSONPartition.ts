@@ -21,7 +21,6 @@ class JSONPartition extends Partition {
         // @ts-ignore
         jsonNotes.push(new Note(playable.note, playable.octave, playable.duration));
       } else if (isJSONChord(playable)) {
-        console.log('chord', playable);
         // @ts-ignore
         jsonNotes.push(new CustomChord(playable.map((note) => new Note(note.note, note.octave, note.duration))));
       } else {
