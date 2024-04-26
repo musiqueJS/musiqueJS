@@ -1,5 +1,6 @@
 import { Partition } from "./Partition";
 import { Note } from "./Note";
+import CustomOscillatorType from "./CustomOscillatorType";
 
 interface JSONNote {
   note: string;
@@ -15,7 +16,7 @@ class JSONPartition extends Partition {
    */
   constructor(
     public json: JSONNote[],
-    public oscillator: OscillatorType = "sine",
+    public oscillator: CustomOscillatorType = "square",
     public audioContext: AudioContext,
   ) {
     enum NoteEnum {

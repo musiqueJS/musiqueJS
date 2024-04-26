@@ -1,3 +1,4 @@
+import CustomOscillatorType from "./CustomOscillatorType";
 import PlayableInterface from "./PlayableInterface";
 
 class Partition {
@@ -9,7 +10,7 @@ class Partition {
 	 */
 	constructor(
 		public playable: PlayableInterface[],
-		public oscillator: OscillatorType = 'sine',
+		public oscillator: CustomOscillatorType = 'square',
 		public audioContext: AudioContext,
 	) {}
 

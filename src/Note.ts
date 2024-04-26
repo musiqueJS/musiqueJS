@@ -1,4 +1,5 @@
 import PlayableInterface from "./PlayableInterface";
+import CustomOscillatorType from "./CustomOscillatorType";
 
 class Note implements PlayableInterface {
   private pitch: number;
@@ -52,8 +53,13 @@ class Note implements PlayableInterface {
     return 440 * power;
   }
 
-  public play(audioContext: AudioContext, oscillator: OscillatorType, resolve: () => void = () => {}): void {
-    const oscillatorNode = this.getOscillator(audioContext, oscillator);
+  public play(audioContext: AudioContext, oscillator: CustomOscillatorType, resolve: () => void = () => {}): void {
+    let oscillatorNode: OscillatorNode;
+    if(oscillator === 'piano') {
+      oscillatorNode = this.getPianoOscillator(audioContext);
+    } else {
+      oscillatorNode = this.getOscillator(audioContext, oscillator);
+    }
     oscillatorNode.start(audioContext.currentTime);
     setTimeout(() => {
       oscillatorNode.stop(0);
@@ -62,17 +68,6 @@ class Note implements PlayableInterface {
       resolve();
     }, this.duration * 1000);
   }
-
-  public playPiano(audioContext: AudioContext, resolve: () => void = () => {}): void {
-    const oscillatorNode = this.getPianoOscillator(audioContext);
-    oscillatorNode.start(audioContext.currentTime);
-    setTimeout(() => {
-      oscillatorNode.stop(0);
-      oscillatorNode.disconnect();
-
-      resolve();
-    }, this.duration * 1000);
-}
 
 
   public getOscillator(
