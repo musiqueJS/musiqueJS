@@ -1,47 +1,44 @@
 import { Partition } from "./Partition";
 import { Note } from "./Note";
 import CustomOscillatorType from "./CustomOscillatorType";
-
-interface JSONNote {
-  note: string;
-  duration: number;
-  octave: number;
-}
+import { CustomChord } from "./CustomChord";
+import { JSONNote, JSONMusic } from "./interface/JSONPlayable";
 
 class JSONPartition extends Partition {
   /**
-   * @param {JSONNote[]} json - The JSON that will be parsed into a partition.
+   * @param {JSONMusic[]} json - The JSON that will be parsed into a partition.
    * @param {OscillatorType} oscillator - The oscillator type that will be used to play the partition.
    * @param {AudioContext} audioContext - The audio context that will be used to play the partition.
    */
   constructor(
-    public json: JSONNote[],
+    public json: JSONMusic[],
     public oscillator: CustomOscillatorType = "square",
     public audioContext: AudioContext,
   ) {
-    enum NoteEnum {
-      C = 0,
-      CSharp = 1,
-      D = 2,
-      DSharp = 3,
-      E = 4,
-      F = 5,
-      FSharp = 6,
-      G = 7,
-      GSharp = 8,
-      A = 9,
-      ASharp = 10,
-      B = 11,
-    }
     let jsonNotes: Note[] = [];
 
-    for (const note of json) {
-      // @ts-ignore
-      jsonNotes.push(new Note(NoteEnum[note.note], note.octave, note.duration));
+    for (const playable of json) {
+      if (isJSONNote(playable)) {
+        // @ts-ignore
+        jsonNotes.push(new Note(playable.note, playable.octave, playable.duration));
+      } else if (isJSONChord(playable)) {
+        // @ts-ignore
+        jsonNotes.push(new CustomChord(playable.map((note) => new Note(note.note, note.octave, note.duration))));
+      } else {
+        throw new Error("Invalid JSONMusic");
+      }
     }
 
     super(jsonNotes, oscillator, audioContext);
   }
+}
+
+function isJSONNote(obj: any): obj is JSONNote {
+  return 'note' in obj && 'duration' in obj && 'octave' in obj;
+}
+
+function isJSONChord(obj: any): obj is JSONNote[] {
+  return Array.isArray(obj) && obj.every(isJSONNote);
 }
 
 export { JSONPartition };
