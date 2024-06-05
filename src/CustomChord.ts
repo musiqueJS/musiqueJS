@@ -1,3 +1,4 @@
+import CustomOscillatorType from "./CustomOscillatorType";
 import {Note} from "./Note";
 import PlayableInterface from "./PlayableInterface";
 
@@ -9,7 +10,7 @@ class CustomChord implements PlayableInterface {
         public notes: Note[],
     ) {}
 
-    public play(audioContext: AudioContext, oscillator: OscillatorType, resolve: () => void = () => {}): void {
+    public play(audioContext: AudioContext, oscillator: CustomOscillatorType, resolve: () => void = () => {}): void {
         for (const note of this.notes) {
             note.play(audioContext, oscillator, resolve)
         }

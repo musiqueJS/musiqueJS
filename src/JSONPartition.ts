@@ -1,5 +1,6 @@
 import { Partition } from "./Partition";
 import { Note } from "./Note";
+import CustomOscillatorType from "./CustomOscillatorType";
 import { CustomChord } from "./CustomChord";
 import { JSONNote, JSONMusic } from "./interface/JSONPlayable";
 
@@ -11,7 +12,7 @@ class JSONPartition extends Partition {
    */
   constructor(
     public json: JSONMusic[],
-    public oscillator: OscillatorType = "sine",
+    public oscillator: CustomOscillatorType = "square",
     public audioContext: AudioContext,
   ) {
     let jsonNotes: Note[] = [];
