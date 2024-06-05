@@ -66,7 +66,6 @@ class Note implements PlayableInterface {
     }, this.duration * 1000);
   }
 
-
   public getOscillator(
     audioContext: AudioContext,
     oscillator: OscillatorType,
