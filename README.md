@@ -79,3 +79,4 @@ Every issue we identify as [good first issues](https://github.com/musiqueJS/musi
 - Tom Louveau ([@bakabruh](https://github.com/bakabruh))
 - Nicolas de Garrigues (𝕏 [@nicodegarrigues](https://twitter.com/nicodegarrigues))
 - Julien Cousin-Alliot (𝕏 [@nispeon](https://twitter.com/nispeon))
+- Malo Braunschweig (𝕏 [@alusinviii](https://twitter.com/alusinviii))
