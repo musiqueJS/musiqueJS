@@ -57,7 +57,7 @@ class Note implements PlayableInterface {
     } else if(oscillator === 'betterpiano') {
       oscillatorNode = this.getBetterPianoOscillator(audioContext);
     } else if(oscillator === 'bestpiano') {
-      oscillatorNode = this.getBetterPianoOscillator(audioContext);
+      oscillatorNode = this.getBestPianoOscillator(audioContext);
     } else if(oscillator === 'guitar') {
       oscillatorNode = this.getGuitarOscillator(audioContext);
     }else {
@@ -213,9 +213,6 @@ class Note implements PlayableInterface {
 
     return oscillatorNode;
   }
-
-
-
 }
 
 export { Note };
