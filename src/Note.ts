@@ -53,7 +53,7 @@ class Note implements PlayableInterface {
   public play(audioContext: AudioContext, oscillator: CustomOscillatorType, resolve: () => void = () => {}): void {
     let oscillatorNode: OscillatorNode;
     if(oscillator === 'piano') {
-      oscillatorNode = this.getBetterPianoOscillator(audioContext);
+      oscillatorNode = this.getPianoOscillator(audioContext);
     } else if(oscillator === 'guitar') {
       oscillatorNode = this.getGuitarOscillator(audioContext);
     }else {
