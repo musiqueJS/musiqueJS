@@ -1,3 +1,3 @@
-type CustomOscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle' | 'betterpiano' | 'guitar' ;
+type CustomOscillatorType = 'sine' | 'square' | 'sawtooth' | 'triangle' | 'piano' | 'guitar' ;
 
 export default CustomOscillatorType;
