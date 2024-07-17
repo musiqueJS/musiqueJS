@@ -96,7 +96,7 @@ class Note implements PlayableInterface {
     return oscillatorNode;
   }
 
-  public getBetterPianoOscillator(audioContext: AudioContext): OscillatorNode {
+  public getPianoOscillator(audioContext: AudioContext): OscillatorNode {
     const oscillatorNode = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
